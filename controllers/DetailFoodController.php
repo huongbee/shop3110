@@ -4,7 +4,10 @@ require_once 'Controller.php';
 class DetailFoodController extends Controller{
     
     function indexAction(){
-        return $this->loadView('detail-food',[2131]);
+        $data = [
+            'title'=>'Chi tiết'
+        ];
+        return $this->loadView('detail-food',$data);
     }
 }
 
