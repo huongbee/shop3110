@@ -1,7 +1,6 @@
 <?php
 
-require_once 'controllers/Controller.php';
-$c = new Controller;
-
-$c->loadView('detail-food.php',[2131]);
+require_once 'controllers/DetailFoodController.php';
+$c = new DetailFoodController;
+$c->indexAction();
 

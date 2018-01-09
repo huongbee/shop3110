@@ -9,7 +9,7 @@
 </head>
 <body>
     <h2>header</h2>
-    <?php require_once "views/$view"?>
+    <?php require_once "views/$view.php"?>
     <h2>footer</h2>
 </body>
 </html>

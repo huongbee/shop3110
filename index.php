@@ -1,7 +1,7 @@
 <?php
 
-require_once 'controllers/Controller.php';
-$c = new Controller;
+require_once 'controllers/HomeController.php';
+$c = new HomeController;
 
-$c->loadView('index.php',[2131]);
+$c->indexAction();
 
