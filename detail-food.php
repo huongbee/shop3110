@@ -3,5 +3,5 @@
 require_once 'controllers/Controller.php';
 $c = new Controller;
 
-$c->loadView('index.php',[2131]);
+$c->loadView('detail-food.php',[2131]);
 
