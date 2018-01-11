@@ -67,16 +67,16 @@ class DBConnect{
 }
 
 //TH1
-$sql = "update customer set name = ?"; //Ti //14
-$db = new DBConnect;
+// $sql = "update customer set name = ?"; //Ti //14
+// $db = new DBConnect;
 
-$values = ['Thuong Thuong'];
-$result = $db->executeQuery($sql, $values);
-if($result){
-    echo $result = $db->rowCount();
-}
-else echo 121;
-die;
+// $values = ['Thuong Thuong'];
+// $result = $db->executeQuery($sql, $values);
+// if($result){
+//     echo $result = $db->rowCount();
+// }
+// else echo 121;
+// die;
 
 // //TH2
 // $sql = "update customer set name = 'teo' where id = 13"; //Ti //14
@@ -99,9 +99,9 @@ die;
 // var_dump($result);
 
 
-$sql = "SELECT * FROM slide ";
-$db = new DBConnect;
-//$result = $db->loadOneRow($sql);
-$result = $db->loadMoreRows($sql);
- print_r($result);
+// $sql = "SELECT * FROM slide ";
+// $db = new DBConnect;
+// //$result = $db->loadOneRow($sql);
+// $result = $db->loadMoreRows($sql);
+//  print_r($result);
 ?>
