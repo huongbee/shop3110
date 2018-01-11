@@ -9,6 +9,7 @@ class HomeController extends Controller{
 
         $model = new HomeModel;
         $foods = $model->getTodayFoods();
+        $allFoods = $model->getAllFoods();
 
         // echo "<pre>";
         // print_r($foods);
@@ -17,7 +18,8 @@ class HomeController extends Controller{
 
         $value = [
             'title' => $title,
-            'foods' => $foods
+            'foods' => $foods,
+            'allFoods'=>$allFoods
         ];
         return $this->loadView('index',$value);
     }
