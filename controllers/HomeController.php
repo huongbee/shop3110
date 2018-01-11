@@ -10,10 +10,10 @@ class HomeController extends Controller{
         $model = new HomeModel;
         $foods = $model->getTodayFoods();
 
-        echo "<pre>";
-        print_r($foods);
-        echo "</pre>";
-        die;
+        // echo "<pre>";
+        // print_r($foods);
+        // echo "</pre>";
+        // die;
 
         $data = [
             'title' => $title,
