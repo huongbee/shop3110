@@ -15,11 +15,12 @@ class HomeController extends Controller{
         // echo "</pre>";
         // die;
 
-        $data = [
+        $value = [
             'title' => $title,
             'foods' => $foods
         ];
-        return $this->loadView('index',$data);
+        return $this->loadView('index',$value);
     }
 }
+
 

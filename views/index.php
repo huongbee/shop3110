@@ -66,17 +66,15 @@
                                         
                                         <div class="item product-01">
                                             <div class="item-left">
-                                                <img src="public/source/assets/images/product/product-2a.jpg" alt="" class="img img-responsive">
+                                                <img src="public/source/assets/images/hinh_mon_an/<?=$f->image?>" alt="" class="img img-responsive">
                                                 <div class="content-wrapper">
                                                     <a href="chi-tiet-mon-an.html" class="title"><?=$f->name?></a>
                                                     <div class="dot">...................</div>
-                                                    <div class="des">Nguyên liệu: 3 quả dưa chuột, 3 quả cà chua, 1/2 quả dứa, xà lách xoăn,
-                                                        hành tây, tỏi, đường, dấm, ớt.</div>
+                                                    <div class="des"><?=$f->summary?></div>
                                                 </div>
                                             </div>
                                             <div class="item-right">
-                                                <span class="price woocommerce-Price-amount amount">
-                                                    <span class="price-symbol">$</span>25.0</span>
+                                                <span class="price woocommerce-Price-amount amount"><?=number_format($f->price)?><span class="price-symbol">vnd</span></span>
                                             </div>
                                         </div>
                                         
