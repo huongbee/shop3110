@@ -133,25 +133,14 @@
                     </div>
 
                     <ul class="pagination pagination-lg">
-                        <li>
-                            <a href="#">1</a>
+                        <?php 
+                        for($i = 1; $i <= $data['tongSoTrang']; $i++):?>
+                        <li class="<?=$_GET['page'] == $i? 'active': ''?>">
+                            <a href="./?page=<?=$i?>"><?=$i?></a>
                         </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">5</a>
-                        </li>
+                        <?php endfor?>
                     </ul>
-
                 </div>
-
             </div>
         </section>
 

@@ -7,15 +7,19 @@ class HomeModel extends DBConnect{
         return $this->loadMoreRows($sql);
     }
 
-    function getAllFoods($vitri = -1,$soluong = -1){
-        $sql = "SELECT * FROM foods";
-        if($vitri>-1 && $soluong>0){
+    function getAllFoods($vitri = 0, $soluong = 0){
+        $sql = "SELECT * FROM foods ";
+        if($vitri >= 0 && $soluong>0){
             $sql .=" LIMIT $vitri,$soluong";
         }
-        
         return $this->loadMoreRows($sql);
     }
 
+    function countFoods(){
+
+        $sql = "SELECT count(id) FROM foods";
+        return $this->loadOneRow($sql);
+    }
 }
 
 
