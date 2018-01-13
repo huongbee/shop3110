@@ -132,16 +132,7 @@
                         </div>
                     </div>
 
-                    <ul class="pagination pagination-lg">
-
-                        <?php 
-                        for($i = 1; $i <= $data['tongSoTrang']; $i++):?>
-                        <li class="<?=$_GET['page'] == $i? 'active': ''?>">
-                            <a href="./?page=<?=$i?>"><?=$i?></a>
-                        </li>
-                        
-                        <?php endfor?>
-                    </ul>
+                    <?=$data['paginationHTML']?>
                 </div>
             </div>
         </section>

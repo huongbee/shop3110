@@ -33,11 +33,12 @@ class HomeController extends Controller{
 
         $pager = new Pager($tongSP,$page,$soluong,5);
         $paginationHTML = $pager->showPagination();
+
         $value = [
             'title' => $title,
             'foods' => $foods,
             'allFoods' => $allFoods,
-            'paginationHTML'=>$paginationHTML
+            'paginationHTML' => $paginationHTML
         ];
         return $this->loadView('index',$value);
     }

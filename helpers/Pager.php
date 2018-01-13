@@ -52,10 +52,14 @@ class Pager{
 			//5 < 7
 			if($this->_nPageShow < $this->_totalPage){
 				
-				if($this->_currentPage == 1 || $this->_currentPage == $this->_totalPage){
+				if($this->_currentPage == 1 ){
 					$startPage 	= 1;
 					$endPage 	= $this->_nPageShow;
-				}
+                }
+                else if($this->_currentPage == $this->_totalPage){
+                    $startPage 	= $this->_totalPage - $this->_nPageShow + 1;
+					$endPage 	= $this->_currentPage;
+                }
 				
 				else{
 					
@@ -92,7 +96,7 @@ class Pager{
 					$listPages .= "<li><a href='$actual_link?page=".$i."'>".$i.'</a>';
 				}
 			}
-			$paginationHTML = '<ul class="pagination">'.$start.$prev.$listPages.$next.$end.'</ul>';
+			$paginationHTML = '<ul class="pagination pagination-lg">'.$start.$prev.$listPages.$next.$end.'</ul>';
 		}
 		return $paginationHTML;
 	}
