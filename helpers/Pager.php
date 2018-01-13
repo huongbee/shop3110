@@ -3,11 +3,10 @@
 class Pager{
 
 	private $_totalItem; // tổng số item //62
-	public $_nItemOnPage; // số lượng item trong 1 page //9
-	private $_nPageShow ; // số lượng link page hiển thị 
+	private $_nItemOnPage; // số lượng item trong 1 page //9
+	private $_nPageShow ; // số lượng link page hiển thị  //5
 	private $_totalPage; // tổng số page   62/9= 7
 	private $_currentPage; // page hiện tại // 1
-
 
 	public function __construct($totalItem,$currentPage = 1,$nItemOnPage = 5,$nPageShow = 5){
 		$this->_totalItem 	= $totalItem;
@@ -21,18 +20,13 @@ class Pager{
 		$this->_totalPage  	= ceil($totalItem/$nItemOnPage); //62/9
 	}
 
-	public function get_nItemOnPage(){
-		return $this->_nItemOnPage;
-	}
-	public function getCurrentPage(){
-		return $this->_currentPage;
-	}
 	public function showPagination(){
 		//p     		=3
 		//total 		=62
 		//so sp 1 page  = 9
 		//số trang hthi = 5
-		$paginationHTML 	= '';
+        $paginationHTML 	= '';
+        
 		if($this->_totalPage > 1){
 			$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 			//echo $actual_link; die;
@@ -43,9 +37,11 @@ class Pager{
 			$start 	= '';
 			$prev 	= '';
 			if($this->_currentPage > 1){
-				$start 	= "<li><a href='$actual_link?page=1'>Start</a></li>";
+                $start 	= "<li><a href='$actual_link?page=1'>Start</a></li>";
+                
 				$prev 	= "<li><a href='$actual_link?page=".($this->_currentPage-1)."'>«</a></li>";
-			}
+            }
+            
 			$next 	= '';
 			$end 	= '';
 			if($this->_currentPage < $this->_totalPage){
@@ -55,20 +51,14 @@ class Pager{
 
 			//5 < 7
 			if($this->_nPageShow < $this->_totalPage){
-				//đầu
-				if($this->_currentPage == 1){
+				
+				if($this->_currentPage == 1 || $this->_currentPage == $this->_totalPage){
 					$startPage 	= 1;
 					$endPage 	= $this->_nPageShow;
 				}
-				//cuối
-				else if($this->_currentPage == $this->_totalPage){
-					$startPage		= $this->_totalPage - $this->_nPageShow + 1;
-					//  cái số trang bắt đầu để hiển thị
-					$endPage		= $this->_totalPage;
-				}
-				//3 giữa
+				
 				else{
-					//7 - (5-1)/2 = 5
+					
 					$startPage		= $this->_currentPage - ($this->_nPageShow-1)/2;
 
 					//7 + (5-1)/2 = 9
@@ -87,7 +77,8 @@ class Pager{
 					}
 				}
 
-			}
+            }
+            //$this->_nPageShow >= $this->_totalPage
 			else{
 				$startPage		= 1;
 				$endPage		= $this->_totalPage;

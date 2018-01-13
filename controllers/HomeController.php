@@ -1,6 +1,7 @@
 <?php
 require_once 'Controller.php';
 require_once 'model/HomeModel.php';
+require_once 'helpers/Pager.php';
 
 class HomeController extends Controller{
 
@@ -30,12 +31,13 @@ class HomeController extends Controller{
         $vitri = ($page - 1)*$soluong;
         $allFoods = $model->getAllFoods($vitri, $soluong);
 
-        $tongSoTrang = ceil($tongSP/$soluong);
+        $pager = new Pager($tongSP,$page,$soluong,5);
+        $paginationHTML = $pager->showPagination();
         $value = [
             'title' => $title,
             'foods' => $foods,
             'allFoods' => $allFoods,
-            'tongSoTrang' => $tongSoTrang
+            'paginationHTML'=>$paginationHTML
         ];
         return $this->loadView('index',$value);
     }
