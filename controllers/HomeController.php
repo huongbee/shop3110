@@ -10,7 +10,7 @@ class HomeController extends Controller{
         $model = new HomeModel;
         $foods = $model->getTodayFoods();
         $allFoods = $model->getAllFoods();
-        //echo count($allFoods); die; //tinh so link pham trang
+        //echo count($allFoods); die; //tinh so link phan trang
 
         $page = isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page']!=0
                 ? (int)abs($_GET['page']) : 1;
