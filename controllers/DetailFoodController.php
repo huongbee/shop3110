@@ -17,7 +17,7 @@ class DetailFoodController extends Controller{
             return;
         }
         $data = [
-            'title'=>'Chi tiết',
+            'title'=> $food->name,
             'food'=>$food
         ];
         return $this->loadView('detail-food',$data);
