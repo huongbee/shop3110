@@ -8,11 +8,14 @@ class DetailFoodController extends Controller{
     function indexAction(){
         $model = new DetailFoodModel;
 
-        $id = $_GET['id'];
-        $alias = $_GET['alias'];
+        $id = isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : false;
+        $alias = isset($_GET['id']) ? $_GET['alias'] : false;
 
         $food = $model->getFoodById($id, $alias);
-        
+        if(!$food || $id==false || $alias==false){
+            header("Location:404.php");
+            return;
+        }
         $data = [
             'title'=>'Chi tiết',
             'food'=>$food

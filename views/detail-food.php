@@ -28,7 +28,7 @@
                 <div class="main-slider">
                   <div class="slides">
                     <div class="featured-image-item">
-                      <img src="public/source/assets/images/product/product-full-02.jpg" alt="fooday" class="img img-responsive">
+                      <img src="public/source/assets/images/hinh_mon_an/<?=$food->image?>" alt="fooday" class="img img-responsive" style="height:350px">
                     </div>
                   </div>
                 </div>
