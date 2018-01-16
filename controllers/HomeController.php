@@ -26,7 +26,6 @@ class HomeController extends Controller{
         if(isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page']!=0){
             $page = (int)abs($_GET['page']);
         }
-
         $soluong = 9;
         $vitri = ($page - 1)*$soluong;
         $allFoods = $model->getAllFoods($vitri, $soluong);
