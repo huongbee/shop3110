@@ -68,7 +68,7 @@
                                             <div class="item-left">
                                                 <img src="public/source/assets/images/hinh_mon_an/<?=$f->image?>" alt="" class="img img-responsive">
                                                 <div class="content-wrapper">
-                                                    <a href="chi-tiet-mon-an.html" class="title"><?=$f->name?></a>
+                                                    <a href="<?=$f->id?>-<?=$f->url?>.html" class="title"><?=$f->name?></a>
                                                     <div class="dot">...................</div>
                                                     <div class="des"><?=$f->summary?></div>
                                                 </div>
@@ -110,7 +110,7 @@
                                             </span>
                                         </div>
                                         <div class="group-btn">
-                                            <a href="chi-tiet-mon-an.html" class="swin-btn btn-link">
+                                            <a href="<?=$f->id?>-<?=$f->url?>.html" class="swin-btn btn-link">
                                                 <i class="icons fa fa-link"></i>
                                             </a>
                                             <a href="javascript:void(0)" class="swin-btn btn-add-to-card">
@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="block-content">
                                         <h5 class="title">
-                                            <a href="chi-tiet-mon-an.html"><?=$f->name?></a>
+                                            <a href="<?=$f->id?>-<?=$f->url?>.html"><?=$f->name?></a>
                                         </h5>
                                         <div class="product-info">
                                             <?=$f->summary?>

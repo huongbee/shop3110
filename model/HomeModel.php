@@ -3,12 +3,17 @@ require_once 'DBConnect.php';
 class HomeModel extends DBConnect{
 
     function getTodayFoods(){
-        $sql = "SELECT * FROM foods WHERE today=1";
+        $sql = "SELECT f.*, p.url FROM foods f
+                INNER JOIN page_url p
+                ON f.id_url = p.id
+                WHERE f.today=1";
         return $this->loadMoreRows($sql);
     }
 
     function getAllFoods($vitri = 0, $soluong = 0){
-        $sql = "SELECT * FROM foods ";
+        $sql = "SELECT f.*, p.url FROM foods f
+                INNER JOIN page_url p
+                ON f.id_url = p.id ";
         if($vitri >= 0 && $soluong>0){
             $sql .=" LIMIT $vitri,$soluong";
         }
