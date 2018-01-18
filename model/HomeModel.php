@@ -21,9 +21,19 @@ class HomeModel extends DBConnect{
     }
 
     function countFoods(){
-
         $sql = "SELECT count(id) FROM foods";
         return $this->loadOneRow($sql);
+    }
+
+    function selectPromotionFoods(){
+        $sql = "SELECT f.*, p.url FROM foods f
+                INNER JOIN page_url p
+                ON f.id_url = p.id
+                WHERE promotion_price<price
+                AND promotion_price<>0
+                ORDER BY id DESC 
+                LIMIT 0,16";
+        return $this->loadMoreRows($sql);
     }
 }
 
