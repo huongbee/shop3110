@@ -10,5 +10,18 @@ class DetailFoodModel extends DBConnect{
                 AND p.url = '$alias'";
         return $this->loadOneRow($sql);
     }
+
+    function selectRelatedFood($id_type,$id){
+        $sql = "SELECT f.*, p.url FROM foods f
+                INNER JOIN page_url p
+                ON f.id_url = p.id
+                WHERE f.id_type = $id_type
+                AND f.id<>$id";
+
+        return $this->loadMoreRows($sql);
+    }
+
+
+
 }
 ?>

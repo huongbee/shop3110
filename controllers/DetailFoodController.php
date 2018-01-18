@@ -16,9 +16,12 @@ class DetailFoodController extends Controller{
             header("Location:404.php");
             return;
         }
+        $relatedFoods = $model->selectRelatedFood($food->id_type,$food->id);
+        //print_r($relatedFoods);
         $data = [
             'title'=> $food->name,
-            'food'=>$food
+            'food'=>$food,
+            'relatedFoods'=>$relatedFoods
         ];
         return $this->loadView('detail-food',$data);
     }
