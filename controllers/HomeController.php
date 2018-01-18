@@ -42,6 +42,10 @@ class HomeController extends Controller{
         return $this->loadView('index',$value);
     }
 
+    function searchAction(){
+        return $this->loadView('search');
+    }
+
 
 }
 

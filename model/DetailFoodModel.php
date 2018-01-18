@@ -20,6 +20,14 @@ class DetailFoodModel extends DBConnect{
 
         return $this->loadMoreRows($sql);
     }
+    /**
+     * ALTER TABLE foods ADD FULLTEXT (name,detail)
+     */
+
+    // SELECT * FROM foods 
+    // WHERE MATCH(name,detail) AGAINST (50000)
+    // OR price = 50000
+
 
 
 
