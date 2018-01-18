@@ -43,8 +43,14 @@ class HomeController extends Controller{
     }
 
     function searchAction(){
-        
-        return $this->loadView('search');
+        $model = new HomeModel;
+        $promotionFoods = $model->selectPromotionFoods();
+
+        $data = [
+            'title'=>"Tìm kiếm",
+            'promotionFoods'=>$promotionFoods
+        ];
+        return $this->loadView('search', $data);
     }
 
 

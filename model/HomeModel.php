@@ -31,7 +31,7 @@ class HomeModel extends DBConnect{
                 ON f.id_url = p.id
                 WHERE promotion_price<price
                 AND promotion_price<>0
-                ORDER BY id DESC 
+                ORDER BY f.id DESC 
                 LIMIT 0,16";
         return $this->loadMoreRows($sql);
     }
