@@ -139,3 +139,10 @@
 
     </div>
 </div>
+<script>
+    var page = "<?=isset($_GET['page']) ? $_GET['page'] : 0?>"
+    if(page!=0){
+        var body = $("html, body");
+        body.stop().animate({scrollTop:2000});
+    }
+</script>
