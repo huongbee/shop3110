@@ -4,8 +4,8 @@
             <div class="slide-content slide-layout-02">
                 <div class="container">
                     <div class="slide-content-inner">
-                        <img src="public/source/assets/images/slider/slider2-icon.png" data-ani-in="fadeInUp" data-ani-out="fadeOutDown" data-ani-delay="500" alt="fooday"
-                            class="slide-icon img img-responsive animated">
+                        <img src="public/source/assets/images/slider/slider2-icon.png" data-ani-in="fadeInUp" data-ani-out="fadeOutDown" data-ani-delay="500"
+                            alt="fooday" class="slide-icon img img-responsive animated">
                         <h3 data-ani-in="fadeInUp" data-ani-out="fadeOutDown" data-ani-delay="1000" class="slide-title animated">FOODAY RESTAURANT</h3>
                         <p data-ani-in="fadeInUp" data-ani-out="fadeOutDown" data-ani-delay="1500" class="slide-sub-title animated">
                             <span class="line-before"></span>
@@ -61,23 +61,30 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div data-height="200" class="products nav-slider">
-                                        
+
                                         <?php foreach($data['foods'] as $f):?>
-                                        
+
                                         <div class="item product-01">
                                             <div class="item-left">
                                                 <img src="public/source/assets/images/hinh_mon_an/<?=$f->image?>" alt="" class="img img-responsive">
                                                 <div class="content-wrapper">
-                                                    <a href="<?=$f->id?>-<?=$f->url?>.html" class="title"><?=$f->name?></a>
+                                                    <a href="<?=$f->id?>-<?=$f->url?>.html" class="title">
+                                                        <?=$f->name?>
+                                                    </a>
                                                     <div class="dot">...................</div>
-                                                    <div class="des"><?=$f->summary?></div>
+                                                    <div class="des">
+                                                        <?=$f->summary?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="item-right">
-                                                <span class="price woocommerce-Price-amount amount"><?=number_format($f->price)?><span class="price-symbol">vnd</span></span>
+                                                <span class="price woocommerce-Price-amount amount">
+                                                    <?=number_format($f->price)?>
+                                                        <span class="price-symbol">vnd</span>
+                                                </span>
                                             </div>
                                         </div>
-                                        
+
                                         <?php endforeach ?>
 
                                     </div>
@@ -106,7 +113,8 @@
                                         <img src="public/source/assets/images/hinh_mon_an/<?=$f->image?>" alt="" class="img img-responsive" style="height:300px">
                                         <div class="block-circle price-wrapper">
                                             <span class="price woocommerce-Price-amount amount">
-                                                <?=number_format($f->price)?><span class="price-symbol">vnd</span>
+                                                <?=number_format($f->price)?>
+                                                    <span class="price-symbol">vnd</span>
                                             </span>
                                         </div>
                                         <div class="group-btn">
@@ -120,7 +128,9 @@
                                     </div>
                                     <div class="block-content">
                                         <h5 class="title">
-                                            <a href="<?=$f->id?>-<?=$f->url?>.html"><?=$f->name?></a>
+                                            <a href="<?=$f->id?>-<?=$f->url?>.html">
+                                                <?=$f->name?>
+                                            </a>
                                         </h5>
                                         <div class="product-info">
                                             <?=$f->summary?>
@@ -141,8 +151,8 @@
 </div>
 <script>
     var page = "<?=isset($_GET['page']) ? $_GET['page'] : 0?>"
-    if(page!=0){
+    if (page != 0) {
         var body = $("html, body");
-        body.stop().animate({scrollTop:2000});
+        body.stop().animate({ scrollTop: 2000 });
     }
 </script>
