@@ -20,13 +20,13 @@
             <div class="container">
                 <div class="swin-sc swin-sc-title style-3">
                     <p class="title">
-                        <span>Tìm kiêm món ăn</span>
+                        <span>Tìm kiếm món ăn</span>
                     </p>
                 </div>
                 <div class="swin-sc swin-sc-product products-02 carousel-02">
                     <div class="row ">
                         <label class="col-md-6 col-md-offset-3">Nhập tên món/mô tả/đơn giá:
-                            <input type="text" value="" class="form-control">
+                            <input type="text" class="form-control" id="keyword">
                         </label>
                     </div>
                     <div class="products nav-slider margin-top-50">
@@ -71,3 +71,24 @@
         </section>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+
+        var delay = (function(){
+        var timer = 0;
+        return function(cb, ms){
+            clearTimeout (timer);
+            timer = setTimeout(cb, ms);
+        };
+        })();
+
+        $('#keyword').keyup(function() {
+            delay(function(){
+                var keyword = $('#keyword').val()
+                console.log(keyword);
+            }, 1000 );
+        });
+
+
+    })
+</script>
