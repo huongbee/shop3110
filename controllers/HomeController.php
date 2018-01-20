@@ -53,6 +53,13 @@ class HomeController extends Controller{
         return $this->loadView('search', $data);
     }
 
+    function postSearchAction(){
+        $key = $_POST['tukhoa'];
+
+        $model = new HomeModel;
+        $foods = $model->searchFoods($key);
+        return $this->callView("result-search",$foods);
+    }
 
 }
 

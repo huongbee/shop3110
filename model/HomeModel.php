@@ -35,6 +35,14 @@ class HomeModel extends DBConnect{
                 LIMIT 0,16";
         return $this->loadMoreRows($sql);
     }
+
+    function searchFoods($key){
+        $sql = "SELECT * FROM foods 
+                WHERE MATCH(name,detail) AGAINST('$key')
+                OR price='$key'";
+        return $this->loadMoreRows($sql);
+        
+    }
 }
 
 
