@@ -75,20 +75,31 @@
     $(document).ready(function(){
 
         var delay = (function(){
-        var timer = 0;
-        return function(cb, ms){
-            clearTimeout (timer);
-            timer = setTimeout(cb, ms);
-        };
+            var timer = 0;
+            return function(cb, ms){
+                clearTimeout (timer);
+                timer = setTimeout(cb, ms);
+            };
         })();
 
         $('#keyword').keyup(function() {
             delay(function(){
                 var keyword = $('#keyword').val()
-                console.log(keyword);
+                $.ajax({
+                    type:'POST',
+                    data:{
+                        tukhoa: keyword
+                    },
+                    url:'search.php',
+                    success:function(value){
+                        console.log(value)
+                    }
+                })
+
             }, 1000 );
         });
 
+        
 
     })
 </script>

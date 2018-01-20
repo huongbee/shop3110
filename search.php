@@ -2,5 +2,8 @@
 
 require_once 'controllers/HomeController.php';
 $c = new HomeController;
-$c->searchAction();
+if(!$_POST){
+    $c->searchAction();
+}
+else echo $_POST['tukhoa'];
 
