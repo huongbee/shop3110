@@ -1,3 +1,9 @@
+<!-- <style>
+.slick-padding{
+    clear:both;
+    height:auto
+}
+</style> -->
 <div class="page-container">
     <div data-bottom-top="background-position: 50% 50px;" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -50px;"
         class="page-title page-menu">
@@ -29,8 +35,10 @@
                             <input type="text" class="form-control" id="keyword">
                         </label>
                     </div>
+
+                    <div class="row"><button class="btn btn-success btnLoadMore">Xem thêm</button></div>
                     <div class="products nav-slider margin-top-50">
-                        <div class="row slick-padding">
+                        <div class="row slick-padding" id="show-data">
                             <?php foreach($data['promotionFoods'] as $f):?>
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="blog-item item swin-transition">
@@ -81,25 +89,56 @@
                 timer = setTimeout(cb, ms);
             };
         })();
-
+        var clickTime = 1
         $('#keyword').keyup(function() {
             delay(function(){
                 var keyword = $('#keyword').val()
-                $.ajax({
-                    type:'POST',
-                    data:{
-                        tukhoa: keyword
-                    },
-                    url:'search.php',
-                    success:function(value){
-                        console.log(value)
-                    }
-                })
-
+                if($.trim(keyword)!=''){
+                    $.ajax({
+                        type:'POST',
+                        data:{
+                            tukhoa: keyword,
+                            clickTime:clickTime
+                        },
+                        url:'search.php',
+                        
+                        success:function(value){
+                            if($.trim(value)!=''){
+                                $('#show-data').html(value)
+                                //$('#show-data').append(value)
+                                //$('#show-data').prepend(value)
+                            }
+                            
+                        }
+                    })
+                }
+                //else alert("Vui lòng nhập từ khoá")
+                
             }, 1000 );
         });
-
         
+        // $('.btnLoadMore').click(function(){
+        //     var keyword = $('#keyword').val()
+        //     clickTime = clickTime+1
+        //     if($.trim(keyword)!=''){
+        //             $.ajax({
+        //                 type:'POST',
+        //                 data:{
+        //                     tukhoa: keyword,
+        //                     clickTime:clickTime
+        //                 },
+        //                 url:'search.php',
+        //                 success:function(value){
+        //                     console.log(value)
+        //                     if($.trim(value)!=''){
+        //                         $('#show-data').append(value)
+        //                     }
+                            
+        //                 }
+        //             })
+        //         }
+        // })
 
     })
 </script>
+

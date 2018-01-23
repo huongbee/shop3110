@@ -53,9 +53,17 @@ class HomeController extends Controller{
         return $this->loadView('search', $data);
     }
 
+    // function postSearchAction(){
+    //     $key = $_POST['tukhoa'];
+    //     $model = new HomeModel;
+    //     $soluong = 2;
+    //     $page = isset($_POST['clickTime']) ?$_POST['clickTime'] : 1 ;
+    //     $vitri = ($page - 1)*$soluong;
+    //     $foods = $model->searchFoods($key,$vitri);
+    //     return $this->callView("result-search",$foods);
+    // }
     function postSearchAction(){
         $key = $_POST['tukhoa'];
-
         $model = new HomeModel;
         $foods = $model->searchFoods($key);
         return $this->callView("result-search",$foods);

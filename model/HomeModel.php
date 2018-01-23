@@ -36,8 +36,20 @@ class HomeModel extends DBConnect{
         return $this->loadMoreRows($sql);
     }
 
+    // function searchFoods($key,$vitri,$soluong=2){
+    //     $sql = "SELECT f.*,p.url FROM foods  f
+    //             INNER JOIN page_url p
+    //             ON f.id_url = p.id
+    //             WHERE MATCH(name,detail) AGAINST('$key')
+    //             OR price='$key'
+    //             LIMIT $vitri,$soluong";
+    //     return $this->loadMoreRows($sql);
+        
+    // }
     function searchFoods($key){
-        $sql = "SELECT * FROM foods 
+        $sql = "SELECT f.*,p.url FROM foods  f
+                INNER JOIN page_url p
+                ON f.id_url = p.id
                 WHERE MATCH(name,detail) AGAINST('$key')
                 OR price='$key'";
         return $this->loadMoreRows($sql);
