@@ -168,7 +168,9 @@
 
             success:function(result){
                 var name = $.trim(result)
+                
                 $('#message').html("Đã thêm <b>"+name+"</b> vào giỏ hàng!")
+                
                 $('#myModal').modal('show')
                 //alert("Đã thêm "+name+" vào giỏ hàng!")
             }
