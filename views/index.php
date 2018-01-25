@@ -121,7 +121,7 @@
                                             <a href="<?=$f->id?>-<?=$f->url?>.html" class="swin-btn btn-link">
                                                 <i class="icons fa fa-link"></i>
                                             </a>
-                                            <a href="javascript:void(0)" class="swin-btn btn-add-to-card">
+                                            <a class="swin-btn btn-add-to-card" data-id="<?=$f->id?>" >
                                                 <i class="fa fa-shopping-basket"></i>
                                             </a>
                                         </div>
@@ -155,4 +155,22 @@
         var body = $("html, body");
         body.stop().animate({ scrollTop: 2000 });
     }
+
+    $('.btn-add-to-card').click(function(){
+        var id = $(this).attr('data-id')//1
+        //console.log(id);
+        $.ajax({
+            url:'cart.php',
+            type:"GET",
+            data:{
+                idSP:id
+            },
+
+            success:function(result){
+                console.log(result)
+            }
+        })
+    })
+
+
 </script>

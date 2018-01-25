@@ -28,7 +28,10 @@ class DetailFoodModel extends DBConnect{
     // WHERE MATCH(name,detail) AGAINST (50000)
     // OR price = 50000
 
-
+    function selectFoodById($id){
+        $sql = "SELECT * FROM foods WHERE id=$id";
+        return $this->loadOneRow($sql);
+    }
 
 
 }
