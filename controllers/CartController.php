@@ -16,7 +16,8 @@ class CartController {
         $cart->add($food, $qty=1);
         $_SESSION['cart'] = $cart;
 
-        print_r($_SESSION['cart']);
+        //print_r($_SESSION['cart']);
+        echo $food->name;
 
 
     }

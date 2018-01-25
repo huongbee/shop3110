@@ -110,6 +110,24 @@
 
         <?php require_once "views/$view.php"?>
 
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-body">
+                <p id="message">.....</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
         <footer>
           <div class="footer-top"></div>
           <div class="footer-main">
