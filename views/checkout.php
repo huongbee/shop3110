@@ -51,7 +51,7 @@
                 <tbody>
                   <?php 
                   $cart = $data['cart'];
-                  foreach($cart->items as $sanpham):
+                  foreach($cart->items as $id=>$sanpham):
                   ?>
                   <tr>
                     <td>
@@ -64,7 +64,7 @@
                     </td>
                     <td><?=number_format($sanpham['item']->price,0,',','.')?> vnd</td>
                     <td>
-                      <select name="product-qty" id="product-qty" class="form-control" width="50">
+                      <select name="product-qty" id="product-qty" class="form-control changeQty" width="50" data-id="<?=$id?>">
                         <?php for($i=1; $i<=5;$i++):?>
                         <option <?= ($i==$sanpham['qty']) ? "selected": ''?>><?=$i?></option>
                         <?php endfor?>
@@ -143,7 +143,6 @@
           </div>
           <?php } ?>
 
-
         </div>
       </div>
     </section>
@@ -205,3 +204,25 @@
     </section>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $('.changeQty').change(function(){
+      var  soluong = $(this).val();
+      var idSP = $(this).attr('data-id')
+
+      //console.log(soluong,idSP)
+      $.ajax({
+        url:"cart.php",
+        data:{
+          qty:soluong,
+          id:idSP,
+          action:"update"
+        },
+        type:"GET",
+        success:function(result){
+          console.log(result)
+        }
+      })
+    })
+  })
+</script>

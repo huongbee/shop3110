@@ -163,9 +163,9 @@
             url:'cart.php',
             type:"GET",
             data:{
-                idSP:id
+                idSP:id,
+                action:'add'
             },
-
             success:function(result){
                 var name = $.trim(result)
                 

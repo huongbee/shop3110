@@ -18,8 +18,10 @@ class CartController {
 
         //print_r($_SESSION['cart']);
         echo $food->name;
-
-
+    }
+    function updateCart(){
+        echo $id = $_GET['id'];
+        echo $qty = $_GET['qty'];
     }
 }
 
