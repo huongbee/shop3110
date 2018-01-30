@@ -59,7 +59,7 @@
                       src="public/source/assets/images/hinh_mon_an/<?=$sanpham['item']->image?>" width="250px">
                       <p>
                         <br>
-                        <b>Uncle Herschel's Favorite</b>
+                        <b><?=$sanpham['item']->name?></b>
                       </p>
                     </td>
                     <td><?=number_format($sanpham['item']->price,0,',','.')?> vnd</td>
@@ -78,6 +78,11 @@
                     </td>
                   </tr>
                   <?php endforeach?>
+                  <tr>
+                    <td colspan="3" style="text-align:right"><b>Tổng tiền:</b> </td>
+                    <td colspan="2" style="color:blue"><b><?=number_format($cart->totalPrice,0,',','.')?> vnd</b> </td>
+                    <td> </td>
+                  </tr>
                 </tbody>
               </table>
 
