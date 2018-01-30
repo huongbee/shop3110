@@ -68,7 +68,7 @@
                     </ul>
                   </div>
                   <div class="item">
-                    <div class="wg-social"><a href="checkout.html"><i class="fa fa-shopping-cart fa-2x"></i><span>Shopping Cart</span></a></div>
+                    <div class="wg-social"><a href="gio-hang.html"><i class="fa fa-shopping-cart fa-2x"></i><span>Shopping Cart</span></a></div>
                   </div>
                 </div>
               </div>
@@ -118,6 +118,7 @@
             <div class="modal-content">
               <div class="modal-body">
                 <p id="message">.....</p>
+                <p><a href="gio-hang.html">Xem giỏ hàng</a></p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
