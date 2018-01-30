@@ -1,5 +1,6 @@
 <?php
 require_once 'Controller.php';
+require_once 'helpers/Cart.php';
 session_start();
 
 class CheckoutController extends Controller{
