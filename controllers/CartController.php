@@ -40,6 +40,15 @@ class CartController {
         echo json_encode($array);
 
     }
+    function deleteCart(){
+        $id = $_GET['id'];
+
+        $oldCart = isset($_SESSION['cart']) ? $_SESSION['cart'] : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        $_SESSION['cart'] = $cart;//lưu cart mới vào session
+        echo number_format($cart->totalPrice,0,',','.').' vnd'; 
+    }
 }
 
 ?>
