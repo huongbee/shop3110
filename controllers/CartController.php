@@ -47,7 +47,7 @@ class CartController {
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
         $_SESSION['cart'] = $cart;//lưu cart mới vào session
-        echo number_format($cart->totalPrice,0,',','.').' vnd'; 
+        echo $cart->totalPrice==0 ? 0 : number_format($cart->totalPrice,0,',','.').' vnd'; 
     }
 }
 

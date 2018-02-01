@@ -17,10 +17,10 @@
     </div>
     <div class="page-content-wrapper">
         <section class="section-reservation-form padding-top-100 padding-bottom-100">
-            <div class="container">
-                <div class="section-content">
+            <div class="container"  id="addContent">
+                <div class="section-content" >
 
-                    <?php  if($data['cart'] ==null){ ?>
+                    <?php  if($data['cart']->totalPrice==0){ ?>
                     <div class="swin-sc swin-sc-title style-2 light">
                         <h3 class="title">
                             <span style="color:#000">Giỏ hàng rỗng</span>
@@ -50,10 +50,10 @@
                                 </thead>
                                 <tbody>
                                     <?php 
-                  $cart = $data['cart'];
-                  foreach($cart->items as $id=>$sanpham):
-                  ?>
-                                    <tr>
+                                    $cart = $data['cart'];
+                                    foreach($cart->items as $id=>$sanpham):
+                                    ?>
+                                    <tr class="item-<?=$id?>">
                                         <td>
                                             <img src="public/source/assets/images/hinh_mon_an/<?=$sanpham['item']->image?>" width="250px">
                                             <p>
@@ -77,7 +77,7 @@
                                         <td class="price-<?=$id?>">
                                             <?= number_format($sanpham['price'],0,',','.') ?> vnd</td>
                                         <td>
-                                            <a href="#" class="remove" data-id="<?=$id?>" title="Remove this item">
+                                            <a class="remove" data-id="<?=$id?>" title="Remove this item">
                                                 <i class="fa fa-trash-o fa-2x"></i>
                                             </a>
                                         </td>
@@ -249,7 +249,19 @@
                 },
                 type: "GET",
                 success: function (result) {
-                    console.log(total)
+                    if($.trim(result)==0){
+                        $('#addContent').html(`
+                            <div class="section-content">
+                                <div class="swin-sc swin-sc-title style-2 light">
+                                    <h3 class="title">
+                                        <span style="color:#000">Giỏ hàng rỗng</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        `)
+                    }
+                    $('.item-'+idSP).hide(500)
+                    //console.log(result)
                     $('#tongtien').html(result)
                 }
             })
