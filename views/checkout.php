@@ -77,7 +77,7 @@
                                         <td class="price-<?=$id?>">
                                             <?= number_format($sanpham['price'],0,',','.') ?> vnd</td>
                                         <td>
-                                            <a href="#" class="remove" title="Remove this item">
+                                            <a href="#" class="remove" data-id="<?=$id?>" title="Remove this item">
                                                 <i class="fa fa-trash-o fa-2x"></i>
                                             </a>
                                         </td>
@@ -88,10 +88,9 @@
                                             <b>Tổng tiền:</b>
                                         </td>
                                         <td colspan="2" style="color:blue">
-                                            <b>
+                                            <b id="tongtien">
                                                 <?=number_format($cart->totalPrice,0,',','.')?> vnd</b>
                                         </td>
-                                        <td> </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -229,9 +228,29 @@
                     action: "update"
                 },
                 type: "GET",
-                success: function (result, message) {
-                    console.log(kq)
-                    $('.price-' + idSP).html(result)
+                dataType:"JSON",
+                success: function (result) {
+                    let total = result.total
+                    let totalOneFood = result.totalOneFood
+                    // console.log(totalOneFood)
+                    // console.log(total)
+                    $('.price-' + idSP).html(totalOneFood)
+                    $('#tongtien').html(total)
+                }
+            })
+        })
+        $('.remove').on('click',function(){
+            var idSP = $(this).attr('data-id');
+            $.ajax({
+                url: "cart.php",
+                data: {
+                    id: idSP,
+                    action: "delete"
+                },
+                type: "GET",
+                success: function (result) {
+                    console.log(total)
+                    $('#tongtien').html(result)
                 }
             })
         })

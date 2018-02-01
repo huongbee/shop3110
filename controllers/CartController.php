@@ -31,9 +31,14 @@ class CartController {
         $cart->update($food, $qty);
         $_SESSION['cart'] = $cart;//lưu cart mới vào session
         //print_r($_SESSION['cart']);
-        echo $totalOneFood = number_format($cart->items[$id]['price'],0,',','.') . " vnd";
+        $totalOneFood = number_format($cart->items[$id]['price'],0,',','.') . " vnd";
+        $total = number_format($cart->totalPrice,0,',','.').' vnd'; 
+        $array = [
+            'totalOneFood'=>$totalOneFood,
+            'total'=>$total
+        ];
+        echo json_encode($array);
 
-        echo $total = number_format($cart->totalPrice,0,',','.').' vnd'; 
     }
 }
 
