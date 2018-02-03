@@ -344,8 +344,37 @@
       </div>
       
     </div>
+
     <!-- jQuery-->
     <script src="public/source/assets/vendors/jquery-1.10.2.min.js"></script>
+
+    <script>
+    $('.btn-add-to-card').click(function(){
+        var id = $(this).attr('data-id')//1
+        var quantity = $('.qty').val();
+        if(typeof(quantity) == 'undefined') quantity=1
+        console.log(quantity);
+        $.ajax({
+            url:'cart.php',
+            type:"GET",
+            data:{
+                idSP:id,
+                qty:quantity,
+                action:'add'
+            },
+            success:function(result){
+                var name = $.trim(result)
+                
+                $('#message').html("Đã thêm <b>"+name+"</b> vào giỏ hàng!")
+                
+                $('#myModal').modal('show')
+                //alert("Đã thêm "+name+" vào giỏ hàng!")
+            }
+        })
+    })
+    </script>
+
+
     <!-- Bootstrap JavaScript-->
     <script src="public/source/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
     <!-- Vendors-->

@@ -156,26 +156,7 @@
         body.stop().animate({ scrollTop: 2000 });
     }
 
-    $('.btn-add-to-card').click(function(){
-        var id = $(this).attr('data-id')//1
-        //console.log(id);
-        $.ajax({
-            url:'cart.php',
-            type:"GET",
-            data:{
-                idSP:id,
-                action:'add'
-            },
-            success:function(result){
-                var name = $.trim(result)
-                
-                $('#message').html("Đã thêm <b>"+name+"</b> vào giỏ hàng!")
-                
-                $('#myModal').modal('show')
-                //alert("Đã thêm "+name+" vào giỏ hàng!")
-            }
-        })
-    })
+    
 
 
 </script>

@@ -230,6 +230,7 @@
                 type: "GET",
                 dataType:"JSON",
                 success: function (result) {
+                    console.log(result)
                     let total = result.total
                     let totalOneFood = result.totalOneFood
                     // console.log(totalOneFood)
