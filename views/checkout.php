@@ -19,8 +19,8 @@
         <section class="section-reservation-form padding-top-100 padding-bottom-100">
             <div class="container"  id="addContent">
                 <div class="section-content" >
-
-                    <?php  if($data['cart']->totalPrice==0){ ?>
+                   <? print_r($data['cart'])?>
+                    <?php  if((isset($data['cart']) &&  $data['cart']->totalPrice==0) || !isset($data['cart'])){ ?>
                     <div class="swin-sc swin-sc-title style-2 light">
                         <h3 class="title">
                             <span style="color:#000">Giỏ hàng rỗng</span>
@@ -66,13 +66,11 @@
                                         <td>
                                             <?=number_format($sanpham['item']->price,0,',','.')?> vnd</td>
                                         <td>
-                                            <select name="product-qty" id="product-qty" class="form-control changeQty" width="50" data-id="<?=$id?>">
-                                                <?php for($i=1; $i<=5;$i++):?>
-                                                <option <?=( $i==$sanpham[ 'qty']) ? "selected": ''?>>
-                                                    <?=$i?>
-                                                </option>
-                                                <?php endfor?>
-                                            </select>
+                                            <div class="input-group">
+                                                <input type="text" name="quanlity"  value="<?=$sanpham['qty']?>" class="form-control qty-<?=$id?> qty" dataid="<?=$id?>">
+                                                
+                                            </div>
+                                            
                                         </td>
                                         <td class="price-<?=$id?>">
                                             <?= number_format($sanpham['price'],0,',','.') ?> vnd</td>
@@ -215,30 +213,49 @@
 </div>
 <script>
     $(document).ready(function () {
-        $('.changeQty').change(function () {
-            var soluong = $(this).val();
-            var idSP = $(this).attr('data-id')
-
-            //console.log(soluong,idSP)
-            $.ajax({
-                url: "cart.php",
-                data: {
-                    qty: soluong,
-                    id: idSP,
-                    action: "update"
-                },
-                type: "GET",
-                dataType:"JSON",
-                success: function (result) {
-                    console.log(result)
-                    let total = result.total
-                    let totalOneFood = result.totalOneFood
-                    // console.log(totalOneFood)
-                    // console.log(total)
-                    $('.price-' + idSP).html(totalOneFood)
-                    $('#tongtien').html(total)
+        $('.qty').keyup(function(){
+            var idSP = $(this).attr('dataid')
+            let soluong = $(this).val()
+            var delay = (function(){
+                var timer = 0;
+                return function(cb, ms){
+                    clearTimeout (timer);
+                    timer = setTimeout(cb, ms);
+                };
+            })();
+            delay(function(){
+                if(isNaN(soluong) ){
+                    alert('Vui lòng nhập số')
+                    return false;
                 }
-            })
+                else if(parseInt(soluong)<=0 ){
+                    alert('Vui lòng nhập số lượng >0')
+                    return false;
+                }
+            
+                $.ajax({
+                    url: "cart.php",
+                    data: {
+                        qty: soluong,
+                        id: idSP,
+                        action: "update"
+                    },
+                    type: "GET",
+                    dataType:"JSON",
+                    success: function (result) {
+                        console.log(result)
+                        let total = result.total
+                        let totalOneFood = result.totalOneFood
+                        // console.log(totalOneFood)
+                        // console.log(total)
+                        $('.price-' + idSP).html(totalOneFood)
+                        $('#tongtien').html(total)
+                    }
+                })
+            },1000)
+        })
+        $('.quanlity-plus').click(function () {
+            
         })
         $('.remove').on('click',function(){
             var idSP = $(this).attr('data-id');
