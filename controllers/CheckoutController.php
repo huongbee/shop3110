@@ -14,5 +14,16 @@ class CheckoutController extends Controller{
         ];
         return $this->loadView('checkout',$data);
     }
+
+    function checkoutAction(){
+        //POST
+        echo $email = $_POST['email'];
+        $fullname = $_POST['fullname'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $note = $_POST['note'];
+
+        
+    }
 }
 

@@ -25,5 +25,7 @@ class DetailFoodController extends Controller{
         ];
         return $this->loadView('detail-food',$data);
     }
+
 }
+
 

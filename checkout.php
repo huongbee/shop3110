@@ -2,6 +2,5 @@
 
 require_once 'controllers/CheckoutController.php';
 $c = new CheckoutController;
-
-$c->indexAction();
+return  !isset($_POST['btnCheckout']) ? $c->indexAction(): $c->checkoutAction();
 

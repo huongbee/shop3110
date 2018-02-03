@@ -101,13 +101,13 @@
                                     <span>Đặt hàng</span>
                                 </h3>
                             </div>
-                            <form>
+                            <form method="POST">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </div>
-                                        <input type="text" placeholder="Fullname" class="form-control">
+                                        <input type="text" placeholder="Fullname" class="form-control" name="fullname" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -115,7 +115,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-envelope"></i>
                                         </div>
-                                        <input type="text" placeholder="Email" class="form-control">
+                                        <input type="text" placeholder="Email" class="form-control" name="email" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -123,7 +123,7 @@
                                         <div class="input-group-addon">
                                             <div class="fa fa-map-marker"></div>
                                         </div>
-                                        <input type="text" placeholder="Address" class="form-control">
+                                        <input type="text" placeholder="Address" class="form-control" name="address" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -131,18 +131,17 @@
                                         <div class="input-group-addon">
                                             <div class="fa fa-phone"></div>
                                         </div>
-                                        <input type="text" placeholder="Phone" class="form-control">
+                                        <input type="text" placeholder="Phone" class="form-control" name="phone" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea placeholder="Message" class="form-control"></textarea>
+                                    <textarea placeholder="Message" class="form-control" name="note"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <div class="swin-btn-wrap center">
-                                        <a href="#" class="swin-btn center form-submit">
-                                            <span>Checkout</span>
-                                        </a>
+                                        <button class="swin-btn center form-submit" name="btnCheckout">Checkout</button>
+                                       
                                     </div>
                                 </div>
                             </form>
@@ -213,8 +212,6 @@
 </div>
 <script>
     $(document).ready(function () {
-        
-        
         $('.qty').keyup(function(){
             var idSP = $(this).attr('dataid')
             var soluong = $(this).val()
