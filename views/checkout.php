@@ -19,7 +19,7 @@
         <section class="section-reservation-form padding-top-100 padding-bottom-100">
             <div class="container"  id="addContent">
                 <div class="section-content" >
-                   <? print_r($data['cart'])?>
+                   
                     <?php  if((isset($data['cart']) &&  $data['cart']->totalPrice==0) || !isset($data['cart'])){ ?>
                     <div class="swin-sc swin-sc-title style-2 light">
                         <h3 class="title">
@@ -213,9 +213,19 @@
 </div>
 <script>
     $(document).ready(function () {
+        
+        
         $('.qty').keyup(function(){
             var idSP = $(this).attr('dataid')
-            let soluong = $(this).val()
+            var soluong = $(this).val()
+            if(isNaN(soluong) ){
+                alert('Vui lòng nhập số')
+                return false;
+            }
+            else if(parseInt(soluong)<=0 ){
+                alert('Vui lòng nhập số lượng > 0')
+                return false;
+            }
             var delay = (function(){
                 var timer = 0;
                 return function(cb, ms){
@@ -224,34 +234,27 @@
                 };
             })();
             delay(function(){
-                if(isNaN(soluong) ){
-                    alert('Vui lòng nhập số')
-                    return false;
+                if(parseInt(soluong)>0){
+                    $.ajax({
+                        url: "cart.php",
+                        data: {
+                            qty: soluong,
+                            id: idSP,
+                            action: "update"
+                        },
+                        type: "GET",
+                        dataType:"JSON",
+                        success: function (result) {
+                            console.log(result)
+                            let total = result.total
+                            let totalOneFood = result.totalOneFood
+                            // console.log(totalOneFood)
+                            // console.log(total)
+                            $('.price-' + idSP).html(totalOneFood)
+                            $('#tongtien').html(total)
+                        }
+                    })
                 }
-                else if(parseInt(soluong)<=0 ){
-                    alert('Vui lòng nhập số lượng >0')
-                    return false;
-                }
-            
-                $.ajax({
-                    url: "cart.php",
-                    data: {
-                        qty: soluong,
-                        id: idSP,
-                        action: "update"
-                    },
-                    type: "GET",
-                    dataType:"JSON",
-                    success: function (result) {
-                        console.log(result)
-                        let total = result.total
-                        let totalOneFood = result.totalOneFood
-                        // console.log(totalOneFood)
-                        // console.log(total)
-                        $('.price-' + idSP).html(totalOneFood)
-                        $('#tongtien').html(total)
-                    }
-                })
             },1000)
         })
         $('.quanlity-plus').click(function () {
