@@ -13,7 +13,6 @@ class CheckoutModel extends DBConnect{
                 VALUES($id_customer,'$dateOrder',$total,'$paymentMethod','$note','$token','$tokenDate')";
     
     return $this->executeQuery($sql) ? $this->getLastId() : false; 
-
     }
 
     function insertBillDetail($idBill,$idFood,$qty,$price){
@@ -22,5 +21,5 @@ class CheckoutModel extends DBConnect{
         return $this->executeQuery($sql);
     }
 
-    
+
 }
