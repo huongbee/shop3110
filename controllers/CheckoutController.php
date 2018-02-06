@@ -17,11 +17,23 @@ class CheckoutController extends Controller{
 
     function checkoutAction(){
         //POST
-        echo $email = $_POST['email'];
+        $email = $_POST['email'];
         $fullname = $_POST['fullname'];
         $address = $_POST['address'];
         $phone = $_POST['phone'];
         $note = $_POST['note'];
+
+        $model = new  CheckoutModel;
+        $idCustomer = $model->insertCustomer($fullname,$email,$address,$phone);
+        if($idCustomer>0){
+            //save bill
+
+        }
+        else{
+            $_SESSION['error']="Vui lòng thử lại";
+            header('Location:gio-hang.html');
+            return;
+        }
 
         
     }

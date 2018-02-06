@@ -19,7 +19,20 @@
         <section class="section-reservation-form padding-top-100 padding-bottom-100">
             <div class="container"  id="addContent">
                 <div class="section-content" >
-                   
+                    
+                    <?php if(isset($_SESSION['error'])):?>
+                        <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <?=$_SESSION['error']?>
+                        </div>
+                    <?php endif?>
+                    <?php if(isset($_SESSION['success'])):?>
+                        <div class="alert alert-success alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <?=$_SESSION['success']?>
+                        </div>
+                    <?php endif?>
+                    
                     <?php  if((isset($data['cart']) &&  $data['cart']->totalPrice==0) || !isset($data['cart'])){ ?>
                     <div class="swin-sc swin-sc-title style-2 light">
                         <h3 class="title">
