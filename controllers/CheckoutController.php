@@ -43,11 +43,28 @@ class CheckoutController extends Controller{
             $idBill = $model->insertBill($idCustomer,$dateOrder,$total,$paymentMethod,$note,$token,$tokenDate);
             if($idBill){
                 //save bill detail
+                foreach($cart->items as $idSP=>$sp){
+                    $billDetail = $model->insertBillDetail($idBill,$idSP,$sp->qty,$sp->price);
+                    if(!$billDetail){
+                        //xoa bill
+                        $model->deleteRecentBill($idBill);
+                        //xoa cus
+                        $model->deleteRecentCus($idCustomer);
+                        //xoa bill detail
+                        $model->deleteRecentBillDetail($idBill);
+
+                        $_SESSION['error']="Vui lòng thử lại";
+                        header('Location:gio-hang.html');
+                        return;
+                    }
+                    //thanh cong?
+                    //gui mail
+                    
+                }
             }
             else{
                 //delete Customer 
-
-                //
+                $model->deleteRecentCus($idCustomer);
                 $_SESSION['error']="Vui lòng thử lại";
                 header('Location:gio-hang.html');
                 return;
