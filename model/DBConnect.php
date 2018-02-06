@@ -31,6 +31,8 @@ class DBConnect{
         return $this->statement = $stmt;
 
     }
+
+    //INSERT/UPDATE/DELETE
     function executeQuery($sql, $values = array()){
         $stmt = $this->bindParam($sql,$values);
         if(!$stmt) return false;
