@@ -23,15 +23,16 @@
                     <?php if(isset($_SESSION['error'])):?>
                         <div class="alert alert-danger alert-dismissable">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <?=$_SESSION['error']?>
+                            <?=$_SESSION['error']; unset($_SESSION['error'])?>
                         </div>
                     <?php endif?>
                     <?php if(isset($_SESSION['success'])):?>
                         <div class="alert alert-success alert-dismissable">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <?=$_SESSION['success']?>
+                            <?=$_SESSION['success']; unset($_SESSION['success'])?>
                         </div>
                     <?php endif?>
+
                     
                     <?php  if((isset($data['cart']) &&  $data['cart']->totalPrice==0) || !isset($data['cart'])){ ?>
                     <div class="swin-sc swin-sc-title style-2 light">
