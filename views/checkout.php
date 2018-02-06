@@ -121,7 +121,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </div>
-                                        <input type="text" placeholder="Fullname" class="form-control" name="fullname" required>
+                                        <input type="text" placeholder="Fullname" class="form-control" name="fullname" required value="ádf">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -129,7 +129,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-envelope"></i>
                                         </div>
-                                        <input type="text" placeholder="Email" class="form-control" name="email" required>
+                                        <input type="text" placeholder="Email" class="form-control" name="email" required value="huongnguyenak96@gmail.com">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -137,7 +137,7 @@
                                         <div class="input-group-addon">
                                             <div class="fa fa-map-marker"></div>
                                         </div>
-                                        <input type="text" placeholder="Address" class="form-control" name="address" required>
+                                        <input type="text" placeholder="Address" class="form-control" name="address" value="ádf" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -145,12 +145,12 @@
                                         <div class="input-group-addon">
                                             <div class="fa fa-phone"></div>
                                         </div>
-                                        <input type="text" placeholder="Phone" class="form-control" name="phone" required>
+                                        <input type="text" placeholder="Phone" class="form-control" name="phone" value="ádf" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea placeholder="Message" class="form-control" name="note"></textarea>
+                                    <textarea placeholder="Message" class="form-control" name="note">qưertyu</textarea>
                                 </div>
                                 <div class="form-group">
                                     <div class="swin-btn-wrap center">
