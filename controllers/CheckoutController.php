@@ -64,9 +64,20 @@ class CheckoutController extends Controller{
                     //gui mail
                     //https://github.com/huongnguyen08/php-mailer
 
+                    $link = "http://localhost/shop3110/accept-order?token=$token&t=$tokenDate";
+
                     $subject = "Xác nhận đơn hàng  #DH00-$idBill";
-                    $content = "<h3>nội dung mail</h3>";
+                    $content = "<h3>nội dung mail</h3>
+                        Vui lòng click vào liên kết bên dưới để xác nhận đơn hàng
+                        <br/>
+                        $link,
+                        <br/>
+                        Thanks.
+                    ";
                     sendMail($fullname, $email, $subject, $content);
+
+                    //////////////tao link check token mail////////////////////////
+
 
                     unset($_SESSION['cart']);
                     unset($cart);
@@ -74,7 +85,7 @@ class CheckoutController extends Controller{
                     $_SESSION['success']= "Kiểm tra email để xác nhận đơn hàng";
                     header('Location:gio-hang.html');
                     return;
-                    //////////////tao link check token mail////////////////////////
+                    
 
                 }
             }
