@@ -1,3 +1,6 @@
+<?php
+if(!isset($_SESSION)) session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
   
@@ -45,7 +48,12 @@
       <div class="page-container">
         <div class="page-404 section-full-screen">
           <div class="content-wrapper"><img src="public/source/assets/images/404/image-main.png" alt="fooday" class="img-main img-responsive">
-            <div class="title">OOOP... Không tìm thấy sản phẩm</div>
+
+            <?php if(isset($_SESSION['error'])):?>
+                <div class="title"><?=$_SESSION['error']?></div>
+            <?php else:?>
+              <div class="title">OOOP... Không tìm thấy sản phẩm</div>
+            <?php endif?>
             <div class="bt-wrapper"><a href="./" class="swin-btn center btn-transparent btn-right"> <span>Về trang chủ</span></a></div>
           </div>
         </div>
