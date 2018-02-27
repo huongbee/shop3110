@@ -1,25 +1,30 @@
 <?php
 require_once 'model/AcceptOrderModel.php';
 session_start();
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 class AcceptOrderController {
     function checkOrder(){
         $token = $_GET['token'];
+        $now = new DateTime(date('Y-m-d h:i:s',time()));
+        $now = $now->getTimestamp();
+        
         $time = $_GET['t'];
+
         $model = new AcceptOrderModel;
         $bill = $model->selectBillByToken($token);
         
         if($bill){
-            // echo "<pre>";
-            // print_r($bill);
-            // echo "</pre>";
-            $checkTime = time()-$time;
-            if($checkTime>86400){
+            $timeCheck = strtotime('+1 day', $bill->token_date);
+            //echo $now - $time;
+            if($now - $time > $timeCheck){
                 $_SESSION['error'] = "Thời gian xác nhận đơn hàng đã hết hạn, vui lòng đặt hàng lại";
                 header('Location:404');
             }
             else{
-                
+                $model->updateStatusBill($bill->id);
+                $_SESSION['success'] = "Xác nhận đơn hàng thành công, Cảm ơn bạn....";
+                header('Location:http://localhost/shop3110/gio-hang.html');
             }
         }
         else{

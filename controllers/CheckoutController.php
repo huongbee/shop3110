@@ -5,6 +5,7 @@ require_once 'model/CheckoutModel.php';
 require_once 'helpers/functions.php';
 require_once 'helpers/mailer/mailer.php';
 session_start();
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 class CheckoutController extends Controller{
     function __construct(){
@@ -35,7 +36,9 @@ class CheckoutController extends Controller{
             $dateOrder = date('Y-m-d',time());
             $paymentMethod = "tructiep";
             $token = createToken();
-            $tokenDate = time();
+            //date('d/m/Y H:i:s',time()) //27/2/2018 1:23:33
+            $tokenDate =  new DateTime(date('Y-m-d h:i:s',time()));
+            $tokenDate = $tokenDate->getTimestamp(); //232323233
 
             $oldCart = $_SESSION['cart'];
             $cart = new Cart($oldCart);

@@ -7,5 +7,10 @@ class AcceptOrderModel extends DBConnect{
         return $this->loadOneRow($sql);
     }
 
+    function updateStatusBill($id){
+        $sql = "UPDATE bills SET token ='', token_date='', status=1 WHERE id=$id";
+        return $this->executeQuery($sql);
+    }
+
 }
 ?>
