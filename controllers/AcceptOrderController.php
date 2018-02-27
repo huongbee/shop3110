@@ -6,18 +6,17 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 class AcceptOrderController {
     function checkOrder(){
         $token = $_GET['token'];
-        $now = new DateTime(date('Y-m-d h:i:s',time()));
-        $now = $now->getTimestamp();
-        
         $time = $_GET['t'];
 
         $model = new AcceptOrderModel;
         $bill = $model->selectBillByToken($token);
         
         if($bill){
-            $timeCheck = strtotime('+1 day', $bill->token_date);
-            //echo $now - $time;
-            if($now - $time > $timeCheck){
+            $timeCheck = strtotime('+1 day', $bill->token_date) ;
+            // echo '<br>';
+            // echo time();
+            // echo date('d/m/Y H:i:s',$timeCheck);
+            if(time() > $timeCheck){
                 $_SESSION['error'] = "Thời gian xác nhận đơn hàng đã hết hạn, vui lòng đặt hàng lại";
                 header('Location:404');
             }

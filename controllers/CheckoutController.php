@@ -36,9 +36,7 @@ class CheckoutController extends Controller{
             $dateOrder = date('Y-m-d',time());
             $paymentMethod = "tructiep";
             $token = createToken();
-            //date('d/m/Y H:i:s',time()) //27/2/2018 1:23:33
-            $tokenDate =  new DateTime(date('Y-m-d h:i:s',time()));
-            $tokenDate = $tokenDate->getTimestamp(); //232323233
+            $tokenDate = time();
 
             $oldCart = $_SESSION['cart'];
             $cart = new Cart($oldCart);
@@ -66,7 +64,6 @@ class CheckoutController extends Controller{
                     //thanh cong?
                     //gui mail
                     //https://github.com/huongnguyen08/php-mailer
-
                     $link = "http://localhost/shop3110/accept-order?token=$token&t=$tokenDate";
 
                     $subject = "Xác nhận đơn hàng  #DH00-$idBill";

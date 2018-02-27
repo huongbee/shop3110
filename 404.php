@@ -50,7 +50,7 @@ if(!isset($_SESSION)) session_start();
           <div class="content-wrapper"><img src="public/source/assets/images/404/image-main.png" alt="fooday" class="img-main img-responsive">
 
             <?php if(isset($_SESSION['error'])):?>
-                <div class="title"><?=$_SESSION['error']; usset($_SESSION['error'])?></div>
+                <div class="title"><?=$_SESSION['error']; unset($_SESSION['error'])?></div>
             <?php else:?>
               <div class="title">OOOP... Không tìm thấy sản phẩm</div>
             <?php endif?>
